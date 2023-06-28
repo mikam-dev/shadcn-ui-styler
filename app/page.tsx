@@ -1,15 +1,14 @@
-
-import { ThemeProvider } from "@/components/theme-provider";
+"use client"
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { ThemeForm } from "@/components/theme-form";
 import Link from "next/link";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
-const colors = [
-
-];
+import { Badge } from "@/components/ui/badge";
+import { Textarea } from "@/components/ui/textarea"
+import CSSMdx from "./css.mdx"
+import { SelectCSS } from "@/components/css-vars";
 
 export default function IndexPage() {
   return (
@@ -38,43 +37,34 @@ export default function IndexPage() {
                 <TabsTrigger value="dark">Dark Mode</TabsTrigger>
               </TabsList>
               <TabsContent value="light">
-                <Card className="flex w-full flex-col items-center">
-                  <CardHeader>
-                    <h2 className="text-lg font-bold md:text-xl">Light Colors</h2>
-                  </CardHeader>
-                  <CardContent className="md:w-max-[80%] w-full ">
-                    <p className="text-sm font-medium leading-none">
-                      This is the light theme.
-                    </p>
-                  </CardContent>
-                </Card>
+                <SelectCSS />
               </TabsContent>
               <TabsContent value="dark">
-                <Card className="flex w-full flex-col items-center">
-                  <CardHeader>
-                    <h2 className="text-lg font-bold md:text-xl">Dark Colors</h2>
-                  </CardHeader>
-                  <CardContent className="md:w-max-[80%] w-full ">
-                    <p className="text-sm font-medium leading-none">
-                      This is the dark theme.
-                    </p>
-                  </CardContent>
-                </Card>
+                <SelectCSS />
               </TabsContent>
             </Tabs>
             <ThemeForm />
           </CardContent>
         </Card>
-        <ThemeProvider>
-          <Card className="flex w-full flex-col items-center">
-            <CardHeader>
-              <h2 className="text-lg font-bold md:text-xl">Theme Preview</h2>
-            </CardHeader>
-            <CardContent className="md:w-max-[80%] w-full ">
+        <Card className="flex w-full flex-col items-center">
+          <CardHeader>
+            <h2 className="text-lg font-bold md:text-xl">Theme Preview</h2>
+          </CardHeader>
+          <CardContent className="md:w-max-[80%] w-full ">
 
-            </CardContent>
-          </Card>
-        </ThemeProvider>
+          </CardContent>
+        </Card>
+        <Card className="flex w-full flex-col items-center">
+          <CardHeader className="flex flex-col items-center">
+            <h2 className="text-lg font-bold md:text-xl">CSS</h2>
+            <p>copy this to your <Badge>/globals.css</Badge></p>
+          </CardHeader>
+          <CardContent className="md:w-max-[80%] w-full ">
+            <Card className="mx-1 grid w-full grid-cols-1 p-4 md:mx-auto md:max-w-[80%]">
+              <CSSMdx />
+            </Card>
+          </CardContent>
+        </Card>
       </div>
     </section>
   )
